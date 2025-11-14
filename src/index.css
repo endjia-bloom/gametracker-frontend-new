@@ -1,0 +1,174 @@
+/* ===========================
+   RESET BÁSICO
+=========================== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: #fafafa;
+  color: #333;
+}
+
+body.dark {
+  background: #1a1a1a;
+  color: white;
+}
+
+/* ===========================
+   TITULOS DORADOS
+=========================== */
+
+.gold {
+  color: #d4af37;
+  font-weight: bold;
+}
+
+.gold-bg {
+  background: #d4af37;
+  color: white;
+}
+
+/* ===========================
+   TARJETAS DE JUEGO
+=========================== */
+.card {
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: 0.2s ease;
+}
+
+body.dark .card {
+  background: #222;
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+/* Imagen del juego */
+.card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* ===========================
+   BOTONES
+=========================== */
+
+/* Botón rosado */
+.btn-rose {
+  background: #ff7ac6;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.2s ease;
+}
+
+.btn-rose:hover {
+  background: #ff5eae;
+}
+
+/* Botón rojo para eliminar */
+.btn-delete {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.btn-delete:hover {
+  background: #d62828;
+}
+
+/* Contenedor de botones */
+.btn-group {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* ===========================
+   ETIQUETAS DE ESTADO
+=========================== */
+.estado-tag {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  margin-top: 8px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* Colores según estado */
+.estado-pendiente {
+  background: #ffe28a;
+  color: #7a5c00;
+}
+
+.estado-jugando {
+  background: #a7e1ff;
+  color: #005f7a;
+}
+
+.estado-completado {
+  background: #b4ffb4;
+  color: #007a1c;
+}
+
+/* ===========================
+   INPUTS Y FORMULARIOS
+=========================== */
+
+input, select, textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  transition: 0.2s ease;
+  background: white;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #d4af37;
+}
+
+/* Dark mode inputs */
+body.dark input,
+body.dark select,
+body.dark textarea {
+  background: #333;
+  color: white;
+  border: 1px solid #555;
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+nav a {
+  color: #d4af37;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
