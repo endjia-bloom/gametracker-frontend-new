@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 
 export default function Biblioteca() {
   const [games, setGames] = useState([]);
-  const [search, setSearch] = useState(""); // 🔍 ESTO ES NUEVO
+  const [search, setSearch] = useState("");
+
+  const [filterEstado, setFilterEstado] = useState("");
+  const [filterGenero, setFilterGenero] = useState("");
+  const [filterPlataforma, setFilterPlataforma] = useState("");
 
   useEffect(() => {
     axios.get("http://localhost:4000/api/juegos")
@@ -27,9 +31,12 @@ export default function Biblioteca() {
       });
   };
 
-  // 🔍 FILTRO DE BÚSQUEDA
-  const filteredGames = games.filter(game =>
-    game.titulo.toLowerCase().includes(search.toLowerCase())
+  // ✅ FILTROS COMBINADOS
+  const juegosFiltrados = games.filter(game =>
+    game.titulo.toLowerCase().includes(search.toLowerCase()) &&
+    (filterEstado ? game.estado === filterEstado : true) &&
+    (filterGenero ? game.genero === filterGenero : true) &&
+    (filterPlataforma ? game.plataforma === filterPlataforma : true)
   );
 
   return (
@@ -38,27 +45,71 @@ export default function Biblioteca() {
         Mi Biblioteca
       </h2>
 
-      {/* 🔍 INPUT DE BUSQUEDA */}
-      <input
-        type="text"
-        placeholder="Buscar juego..."
-        className="search-bar"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
+      {/* 🟣 BÚSQUEDA + FILTROS */}
+      <div
         style={{
-          width: "100%",
-          maxWidth: "400px",
-          padding: "10px 14px",
-          margin: "0 auto 25px auto",
-          display: "block",
-          borderRadius: "10px",
-          background: "#111",
-          color: "white",
-          border: "1px solid #333",
-          fontSize: "15px",
+          display: "flex",
+          gap: "15px",
+          marginBottom: "20px",
+          flexWrap: "wrap",
         }}
-      />
+      >
+        {/* 🔍 Buscar */}
+        <input
+          type="text"
+          placeholder="Buscar juego..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          style={{
+            padding: "8px",
+            borderRadius: "6px",
+            border: "1px solid #ccc",
+            flex: "1",
+          }}
+        />
 
+        {/* Filtro por Estado */}
+        <select
+          value={filterEstado}
+          onChange={(e) => setFilterEstado(e.target.value)}
+          style={{ padding: "8px", borderRadius: "6px" }}
+        >
+          <option value="">Estado</option>
+          <option value="jugando">Jugando</option>
+          <option value="completado">Completado</option>
+          <option value="pendiente">Pendiente</option>
+        </select>
+
+        {/* Filtro por Género */}
+        <select
+          value={filterGenero}
+          onChange={(e) => setFilterGenero(e.target.value)}
+          style={{ padding: "8px", borderRadius: "6px" }}
+        >
+          <option value="">Género</option>
+          <option value="Acción">Acción</option>
+          <option value="Aventura">Aventura</option>
+          <option value="RPG">RPG</option>
+          <option value="Shooter">Shooter</option>
+          <option value="Indie">Indie</option>
+        </select>
+
+        {/* Filtro por Plataforma */}
+        <select
+          value={filterPlataforma}
+          onChange={(e) => setFilterPlataforma(e.target.value)}
+          style={{ padding: "8px", borderRadius: "6px" }}
+        >
+          <option value="">Plataforma</option>
+          <option value="PC">PC</option>
+          <option value="PlayStation">PlayStation</option>
+          <option value="Xbox">Xbox</option>
+          <option value="Nintendo Switch">Switch</option>
+          <option value="Mobile">Mobile</option>
+        </select>
+      </div>
+
+      {/* 🟣 LISTA DE JUEGOS FILTRADOS */}
       <div
         style={{
           display: "grid",
@@ -66,7 +117,7 @@ export default function Biblioteca() {
           gap: "24px",
         }}
       >
-        {filteredGames.map((game) => (
+        {juegosFiltrados.map((game) => (
           <div key={game._id} className="card">
             {/* Imagen */}
             {game.imagen ? (
@@ -104,6 +155,7 @@ export default function Biblioteca() {
               ⏱ {game.horasJugadas} horas
             </p>
 
+            {/* Botones */}
             <div className="btn-group">
               <Link to={`/juego/${game._id}`} className="btn-rose">
                 Reseñas
