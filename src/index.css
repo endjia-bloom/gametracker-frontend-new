@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ===========================
    RESET BÁSICO
 =========================== */
@@ -172,3 +173,30 @@ nav a:hover {
   text-decoration: underline;
 }
 
+=======
+/* Estilos del cuerpo y contenedores */
+body { margin: 0; font-family: sans-serif; background-color: #f0f2f5; }
+.content { padding: 20px; max-width: 1200px; margin: 0 auto; }
+.error-message { background-color: #f8d7da; color: #721c24; padding: 10px; border: 1px solid #f5c6cb; border-radius: 4px; margin-bottom: 20px; text-align: center; }
+.success-message { background-color: #d4edda; color: #155724; padding: 10px; border: 1px solid #c3e6cb; border-radius: 4px; margin-bottom: 20px; text-align: center; }
+
+/* Navegación */
+.navbar { background-color: #333; color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+.navbar-logo { color: white; text-decoration: none; font-size: 1.5em; font-weight: bold; }
+.navbar-link { color: white; text-decoration: none; padding: 8px 15px; border: 1px solid white; border-radius: 5px; transition: background-color 0.3s; }
+.navbar-link:hover { background-color: #555; }
+
+/* Listado de Tarjetas */
+.juegos-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; }
+.juego-card { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+.edit-link { display: inline-block; background-color: #007bff; color: white; padding: 8px 15px; text-decoration: none; border-radius: 4px; margin-top: 10px; }
+.edit-link:hover { background-color: #0056b3; }
+
+/* Formularios y Botones */
+.form-container { max-width: 600px; margin: 40px auto; padding: 20px; background-color: white; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+.game-form input { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+.submit-button { padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 1em; margin-top: 10px; width: 100%; transition: background-color 0.3s; }
+.form-actions { display: flex; gap: 10px; margin-top: 20px; }
+.update-button { background-color: #28a745; flex-grow: 1; color: white; }
+.delete-button { background-color: #dc3545; flex-grow: 1; color: white; }
+>>>>>>> 8e1d6a800346f2961fe53ca99b6989b65cc4e88a
